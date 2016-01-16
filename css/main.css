@@ -1,0 +1,266 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.col-md-9 {
+    height: 96vh;
+    padding-right: 0;
+}
+
+.bgGrey {
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: #e5e5e5;
+    left: -20px;
+    z-index: -1;
+}
+
+.col-md-3 {
+    height: 96vh;
+    border-radius: 5px;
+    background-color: #e5e5e5;
+    margin-top: 3px;
+    padding: 5px 5px 0 5px;
+    position: relative;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: separate;
+    border-right: 1px solid #bcbcbc;
+    border-bottom: 1px solid #bcbcbc;
+}
+
+.table {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 3px;
+}
+
+tr {
+    height: 20px;
+}
+
+td {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center;
+}
+
+.table>tbody>tr>td {
+    border-left: 1px solid #bcbcbc;
+    border-top: 1px solid #bcbcbc;
+}
+
+.dashedBorder {
+    border-top: 1px dashed #989898 !important;
+}
+
+tr:first-child td:first-child {
+    border-top-left-radius: 5px;
+}
+
+tr:first-child td:last-child {
+    border-top-right-radius: 5px;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.day {
+    padding: 14px !important;
+    height: 50px;
+    background-color: #ebf1ff;
+    text-align: center;
+    width: 100px;
+}
+
+.frTable {
+    padding: 14px !important;
+    width: 84px !important;
+    text-align: center;
+    background-color: #e5e5e5;
+}
+
+.footer {}
+
+.btn-success {
+    border-bottom: 2px solid #478947;
+}
+
+.btn-primary {
+    border-bottom: 2px solid #184d7b;
+}
+
+.btn-success,
+.btn-primary {
+    height: 45px;
+    width: 49%;
+}
+
+.btn-primary {
+    line-height: 15px;
+}
+
+#term {
+    margin-bottom: -10px;
+}
+
+.lineBreak {
+    width: 95%;
+    height: 1px;
+    background-color: #3794b1;
+    margin: auto;
+    margin-top: 2px;
+}
+
+#courseBoxContainer {
+    position: absolute;
+    bottom: 5px;
+    top: 190px;
+    right: 10px;
+    left: 10px;
+    padding: 2px 5px 5px 5px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    background-color: #d1d1d1;
+    border: 1px solid #a8a8a8;
+}
+
+.courseBox {
+    margin-top: 3px;
+    background-color: #a0dbed;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #3794b1;
+    cursor: pointer;
+}
+
+.courseBoxEnr {
+    float: right;
+}
+
+.courseBoxCID {
+    float: left;
+    display: block;
+}
+
+.courseBoxProf {
+    clear: left;
+    display: block;
+}
+
+.courseBoxTime {
+    display: block;
+}
+
+.courseBoxLoc {
+    display: block;
+}
+
+.scheduleCourseBox {
+    overflow: hidden;
+    position: absolute;
+    background-color: #a0dbed;
+    padding-left: 2px;
+    padding-right: 2px;
+    line-height: 18px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #3794b1;
+}
+
+#scheduleToImport {
+    width: 500px;
+}
+
+.modal-small {
+    width: 400px;
+}
+
+.classInfo {
+    text-align: left;
+    padding: 5px;
+    width: 200px;
+}
+
+.classInfo:nth-child(odd) {
+    background-color: #e0f0f7;
+}
+
+.classInfo:nth-child(even) {
+    background-color: #eef8fc;
+}
+
+.courseName {
+    font-weight: 600;
+}
+
+
+/* LOADER */
+
+.spinner {
+    margin: 10px auto 0;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #00c3ff;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClassM8</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <table class="table">
+                </table>
+            </div>
+            <div class="col-md-3">
+                <div class="bgGrey"></div>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalImport">Import Schedule</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGetList" onclick="getListOfClasses()"> Get list of classes </button>
+                <div class="form-group">
+                    &nbsp;Select term:
+                    <select class="form-control" id="term">
+                        <option value="1159">Fall 2015</option>
+                        <option value="1161" selected>Winter 2016</option>
+                        <option value="1165">Spring 2016</option>
+                    </select>
+                </div>
+
+
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input id="searchbox" onkeydown="enterSearch()" type="text" class="search-query form-control" placeholder="Search for course..." />
+                        <span class="input-group-btn">
+                            <button id="searchbtn" onclick="search()" class="btn btn-info" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+
+                <center>Format: {course} {course number}</center>
+                <center>To find courses, click <a href="http://uwflow.com/courses" target="_blank">here</a></center>
+                <div class="lineBreak"></div>
+                <div id="courseBoxContainer">
+                    <center>Classes with no start/end times will not be displayed.</center>
+                </div>
+            </div>
+            <div>
+                <center>Find it on Github <a href="https://github.com/andofcourse/classm8">here</a>. Click <a href="mailto:andrei.serban@uwaterloo.ca?Subject=ClassM8%20Bug%20Report">here</a> to submit a bug report. </center>
+            </div>
+        </div>
+    </div>
+
+<!--  Hidden modal (shown on "Import Schedule" press)  -->
+    <div class="modal fade" id="modalImport" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Import Schedule</h4>
+                </div>
+                <div class="modal-body">
+                    <center> 1. Log into <a href="https://quest.pecs.uwaterloo.ca/psp/SS/" target="_blank">Quest</a>, click enroll and select your term.
+                        <br> 2. Press ctrl + A and then ctrl + C (or cmd + A and cmd + C on Mac).
+                        <br> 3. Paste into the box below.
+                        <center style="color:#ea1f1f">Warning: Importing your schedule deletes prior courses in the schedule.</center>
+
+                    </center>
+                    <center>
+                        <textarea class="form-control" id="scheduleToImport" rows="6"></textarea>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="importSchedule($('#scheduleToImport').val())" data-toggle="modal" data-target="#modalImport">Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+<!--  Hidden modal (shown on "Get list of classes" press)  -->
+    <div class="modal fade" id="modalGetList" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-small" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">List of Classes In Schedule</h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <div class="listOfClasses"></div>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGetList">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
