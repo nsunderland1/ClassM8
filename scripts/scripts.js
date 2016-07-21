@@ -48,6 +48,17 @@ function initTable() {
         }
         scheduleTable.append(row);
     }
+
+    $(window).on("resize", function() {
+        $('.scheduleCourseBox').each(function(i) {
+            var timeBounds = $(this).find("div.scheduleCourseBoxTime").text().slice("-").trim();
+            var posn = $('.' + $(this).attr("posn"));
+            $(this).css("width", findWidth());
+            $(this).css("height", findHeight(timeBounds[0], timeBounds[1]));
+            $(this).css("top", posn.position().top);
+            $(this).css("left", posn.position().left);
+        });
+    });
 }
 
 // Parses through the Quest data pasted in by user and calls addCourseToSchedule() on valid classes
@@ -174,6 +185,7 @@ function search() {
         if ((/^[a-zA-Z]+$/.test(first)) && (/^\d+$/.test(second))) {
             $('#courseBoxContainer').empty();
             $('#courseBoxContainer').append('<div class="spinner"> <div class = "bounce1" > </div> <div class = "bounce2" > </div> <div class = "bounce3" > </div> </div>')
+            
             $.ajax({
                 url: "https://classm8.herokuapp.com/get_course/" + term + "/" + first + "/" + second,
                 cache: false,
@@ -359,7 +371,8 @@ function addCourseToSchedule(classToAdd) {
     var courseDays = classToAdd.day.split(/(?=[A-Z])/);
 
     for (k = 0; k < courseDays.length; k++) {
-        var posn = $('.' + classToAdd.start_time.replace(':', '') + "_" + (days.indexOf(courseDays[k]) + 1));
+        var posnClass = classToAdd.start_time.replace(':', '') + "_" + (days.indexOf(courseDays[k]) + 1);
+        var posn = $('.' + posnClass);
         var newScheduleCourseBox = $('<div class="scheduleCourseBox ' + classToAdd.course + classToAdd.section.split(" ")[0] + '"></div>');
         var scheduleCourseBoxCourse = $('<center><div class="scheduleCourseBoxCourse">' +
             classToAdd.course + " - " + classToAdd.section.split(" ")[0] + '</div></center>');
@@ -371,6 +384,7 @@ function addCourseToSchedule(classToAdd) {
         newScheduleCourseBox.css("height", findHeight(classToAdd.start_time,
             classToAdd.end_time));
         newScheduleCourseBox.css("width", findWidth());
+        newScheduleCourseBox.attr("posn", posnClass)
 
         if (classToAdd.section.split(" ")[0] == "TUT") {
             newScheduleCourseBox.css("background-color", "#a0eddb");
